@@ -14,31 +14,29 @@ const sugestaoUso = (sugestaoUso) => {return `<div class="pdp_flex" style="displ
 
 // ---------------------- //
 
-function inserirDadosCodigoSimples(formHtml, funcao, parametro) {
+function inserirDadosCodigo (formHtml, funcao, ...parametro) {
     formHtml.addEventListener('submit', (e) => {
         e.preventDefault();
-        const codigo = document.querySelector(parametro).value;
-        resultado.textContent += (funcao(codigo));
-    })
-}
-
-function inserirDadosCodigoDuplo(formHtml, funcao, parametro1, parametro2) {
-    formHtml.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const codigo1 = document.querySelector(parametro1).value;
-        const codigo2 = document.querySelector(parametro2).value;
-        resultado.textContent += (funcao(codigo1, codigo2));
-    })
-}
-
-function inserirDadosCodigoTriplo(formHtml, funcao, parametro1, parametro2, parametro3) {
-    formHtml.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const codigo1 = document.querySelector(parametro1).value;
-        const codigo2 = document.querySelector(parametro2).value;
-        const codigo3 = document.querySelector(parametro3).value;
-        resultado.textContent += (funcao(codigo1, codigo2, codigo3));
-    })
+        if (parametro.length === 1) {
+            const codigo = document.querySelector(parametro).value;
+            resultado.textContent += (funcao(codigo));
+        }
+        else if (parametro.length === 2) {
+            const codigo1 = document.querySelector(parametro[0]).value;
+            const codigo2 = document.querySelector(parametro[1]).value;
+            resultado.textContent += (funcao(codigo1, codigo2));
+        }
+        else if (parametro.length === 3) {
+            const codigo1 = document.querySelector(parametro[0]).value;
+            const codigo2 = document.querySelector(parametro[1]).value;
+            const codigo3 = document.querySelector(parametro[2]).value;
+            resultado.textContent += (funcao(codigo1, codigo2, codigo3));
+            console.log(typeof parametro);
+        }
+        else{
+            console.log("Função inserirDadosCodigo está sem a opção");
+        }
+        })
 }
 
 function trocarOpcoes() {
@@ -69,10 +67,10 @@ const inserirSugestaoUso = document.querySelector('#inserir-sugestao-uso');
 
 trocarOpcoes();
 
-inserirDadosCodigoSimples(inserirInfoNutricional, informacaoNutricional, '#informacaoNutricional');
-inserirDadosCodigoDuplo(inserirQntPorcoes, quantidadePorcoes, '#qntPorcoes', '#pesoPorcao');
-inserirDadosCodigoSimples(inserirCalorias, caloriasPorcao, '#calorias');
-inserirDadosCodigoTriplo(inserirNutriente, nutriente, '#nome-nutriente', '#qtd-nutriente', '#vlr-diario');
-inserirDadosCodigoTriplo(inserirSubNutriente, subNutriente, '#nome-sub-nutriente', '#qtd-sub-nutriente', '#vlr-diario-sub');
-inserirDadosCodigoSimples(inserirIngredientes, ingredientes, '#ingredientes');
-inserirDadosCodigoSimples(inserirSugestaoUso, sugestaoUso, '#sugestao-uso');
+inserirDadosCodigo(inserirInfoNutricional, informacaoNutricional, '#informacaoNutricional');
+inserirDadosCodigo(inserirQntPorcoes, quantidadePorcoes, '#qntPorcoes', '#pesoPorcao');
+inserirDadosCodigo(inserirCalorias, caloriasPorcao, '#calorias');
+inserirDadosCodigo(inserirNutriente, nutriente, '#nome-nutriente', '#qtd-nutriente', '#vlr-diario');
+inserirDadosCodigo(inserirSubNutriente, subNutriente, '#nome-sub-nutriente', '#qtd-sub-nutriente', '#vlr-diario-sub');
+inserirDadosCodigo(inserirIngredientes, ingredientes, '#ingredientes');
+inserirDadosCodigo(inserirSugestaoUso, sugestaoUso, '#sugestao-uso');
