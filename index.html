@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/stle.css">
+    <title>Tabela Nutricional</title>
+</head>
+<body>
+    <main class="container">
+        <div class="container bg-light mb-4">
+            <h1 class="text-center py-4">Criar Tabela Nutricional - NOA</h1>
+    
+            <form id="preencherTabela">
+                <label for="opcao-inserir" class="form-label">Escolha a opção que deseja inserir</label>
+                <select name="" id="opcao-inserir" class="form-select">
+                    <option value="0">Selecione uma Opção</option>
+                    <option value="informacao-nutricional">Informação Nutricional</option>
+                    <option value="qnt-porcoes">Quantidade de Porções</option>
+                    <option value="calorias-porcao">Calorias por Porção</option>
+                    <option value="bloco-nutriente">Nutriente</option>
+                    <option value="bloco-sub-nutriente">Sub-nutriente</option>
+                    <option value="bloco-ingredientes">Ingredientes</option>
+                    <option value="bloco-sugestao-uso">Sugestão de Uso</option>
+                </select>
+            </form>
+            <br>
+                
+            <!-- Bloco Informação Nutricional -->
+            <form id="inserir-informacao-nutricional">
+                <div id="informacao-nutricional" class="mostrar" style="display: none;">
+                    <label for="informacaoNutricional" class="form-label">Informação nutricional</label>
+                    <input type="text" id="informacaoNutricional" class="form-control" autocomplete="off" value="Informações obtidas pelo fabricante e podem ser conferidas no rótulo do produto." required>   
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-informacao-nutricional" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Calorias Porção -->
+            <form id="inserir-qnt-porcoes">
+                <div id="qnt-porcoes" class="mostrar" style="display: none;">
+                    <label for="qntPorcoes" class="form-label">Quantidade da porção (Exemplo: Porção de 3 comprimidos)</label>
+                    <input type="text" id="qntPorcoes" class="form-control" autocomplete="off" value="Porção de " required>
+                    <label for="pesoPorcao" class="form-label">Peso da porção (Exemplo: 1,5g)</label>
+                    <input type="text" id="pesoPorcao" class="form-control" autocomplete="off" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-qnt-porcoes" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Quantidade Porções -->
+            <form id="inserir-calorias">
+                <div id="calorias-porcao" class="mostrar" style="display: none;">
+                    <label for="calorias" class="form-label">Calorias por porção (Exemplo: 5kcal)</label>
+                    <input type="text" id="calorias" class="form-control" autocomplete="off" value="kcal" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-calorias" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Nutriente -->
+            <form id="inserir-nutriente">
+                <div id="bloco-nutriente" class="mostrar" style="display: none;">
+                    <label for="nome-nutriente" class="form-label">Nome nutriente</label>
+                    <input type="text" id="nome-nutriente" class="form-control" autocomplete="off" required>
+                    <label for="qtd-nutriente" class="form-label">Quantidade por porção (Exemplo: 30g)</label>
+                    <input type="text" id="qtd-nutriente" class="form-control" autocomplete="off" value="g" required>
+                    <label for="vlr-diario" class="form-label">Valor diário (Exemplo: 15%)</label>
+                    <input type="text" id="vlr-diario" class="form-control" autocomplete="off" value="%" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-nutriente" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Sub Nutriente -->
+            <form id="inserir-sub-nutriente">
+                <div id="bloco-sub-nutriente" class="mostrar" style="display: none;">
+                    <label for="nome-sub-nutriente" class="form-label">Nome sub nutriente</label>
+                    <input type="text" id="nome-sub-nutriente" class="form-control" autocomplete="off" required>
+                    <label for="qtd-sub-nutriente" class="form-label">Quantidade por porção (Exemplo: 30g)</label>
+                    <input type="text" id="qtd-sub-nutriente" class="form-control" autocomplete="off" value="g" required>
+                    <label for="vlr-diario-sub" class="form-label">Valor diário (Exemplo: 15%)</label>
+                    <input type="text" id="vlr-diario-sub" class="form-control" autocomplete="off" value="%" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-sub-nutriente" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Ingredientes -->
+            <form id="inserir-ingredientes">
+                <div id="bloco-ingredientes" class="mostrar" style="display: none;">
+                    <label for="ingredientes" class="form-label">Ingredientes</label>
+                    <input type="text" id="ingredientes" class="form-control" autocomplete="off" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-ingredientes" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Bloco Sugestão de Uso -->
+            <form id="inserir-sugestao-uso">
+                <div id="bloco-sugestao-uso" class="mostrar" style="display: none;">
+                    <label for="sugestao-uso" class="form-label">Sugestão de Uso</label>
+                    <input type="text" id="sugestao-uso" class="form-control" autocomplete="off" required>
+                    <div class="d-flex flex-row-reverse">
+                        <button form="inserir-sugestao-uso" class="btn btn-dark my-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <!---------------------------------------------------------------------->
+
+        </div>
+        <div class="content bg-light">
+            <h1 class="text-center py-4">Código Tabela Nutricional</h1>
+            <div id="resultado" class="border border-3 p-2 rounded bg-white"></div>
+            <button class="btn btn-danger border-3 m-3" id="carregar-pagina" onclick="recarregarPagina()">Limpar Tudo</button>
+        </div>
+    </main>
+    
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
