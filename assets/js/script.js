@@ -20,21 +20,25 @@ function inserirDadosCodigo (formHtml, funcao, ...parametro) {
         if (parametro.length === 1) {
             const codigo = document.querySelector(parametro).value;
             resultado.textContent += (funcao(codigo));
+            ultimoInserido = funcao(codigo);
+
         }
         else if (parametro.length === 2) {
             const codigo1 = document.querySelector(parametro[0]).value;
             const codigo2 = document.querySelector(parametro[1]).value;
             resultado.textContent += (funcao(codigo1, codigo2));
+            ultimoInserido = funcao(codigo1, codigo2);
+
         }
         else if (parametro.length === 3) {
             const codigo1 = document.querySelector(parametro[0]).value;
             const codigo2 = document.querySelector(parametro[1]).value;
             const codigo3 = document.querySelector(parametro[2]).value;
             resultado.textContent += (funcao(codigo1, codigo2, codigo3));
-            console.log(typeof parametro);
+            ultimoInserido = funcao(codigo1, codigo2, codigo3);
         }
         else{
-            console.log("Função inserirDadosCodigo está sem a opção");
+            alert("Função inserirDadosCodigo está sem a opção");
         }
         })
 }
@@ -54,6 +58,12 @@ function recarregarPagina(){
     location.reload();
 }
 
+function apagarUltimo() {
+    let apagar = new RegExp(ultimoInserido);
+    let novoTexto = (resultado.textContent).replace(apagar, "");
+    resultado.textContent = novoTexto;
+}
+
 // ---------------------- //
 
 const resultado = document.querySelector('#resultado');
@@ -65,11 +75,13 @@ const inserirSubNutriente = document.querySelector('#inserir-sub-nutriente');
 const inserirIngredientes = document.querySelector('#inserir-ingredientes');
 const inserirSugestaoUso = document.querySelector('#inserir-sugestao-uso');
 
+let ultimoInserido;
+
 trocarOpcoes();
 
 inserirDadosCodigo(inserirInfoNutricional, informacaoNutricional, '#informacaoNutricional');
-inserirDadosCodigo(inserirQntPorcoes, quantidadePorcoes, '#qntPorcoes', '#pesoPorcao');
 inserirDadosCodigo(inserirCalorias, caloriasPorcao, '#calorias');
+inserirDadosCodigo(inserirQntPorcoes, quantidadePorcoes, '#qntPorcoes', '#pesoPorcao');
 inserirDadosCodigo(inserirNutriente, nutriente, '#nome-nutriente', '#qtd-nutriente', '#vlr-diario');
 inserirDadosCodigo(inserirSubNutriente, subNutriente, '#nome-sub-nutriente', '#qtd-sub-nutriente', '#vlr-diario-sub');
 inserirDadosCodigo(inserirIngredientes, ingredientes, '#ingredientes');

@@ -120,7 +120,14 @@
         <div class="content bg-light">
             <h1 class="text-center py-4">Código Tabela Nutricional</h1>
             <div id="resultado" class="border border-3 p-2 rounded bg-white"></div>
-            <button class="btn btn-danger border-3 m-3" id="carregar-pagina" onclick="recarregarPagina()">Limpar Tudo</button>
+            <div class="position-relative">
+                <div class="position-absolute start-0">
+                    <button class="btn btn-dark border-3 m-3" id="carregar-pagina" onclick="apagarUltimo()">Apagar Último</button>
+                </div>
+                <div class="position-absolute end-0">
+                    <button class="btn btn-danger border-3 m-3" id="carregar-pagina" onclick="recarregarPagina()">Limpar Tudo</button>
+                </div>
+            </div>
         </div>
     </main>
     
