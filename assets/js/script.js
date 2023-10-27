@@ -64,9 +64,19 @@ function apagarUltimo() {
     resultado.textContent = novoTexto;
 }
 
+function notificacao (mensagem){
+    const criarDiv = document.createElement('div');
+    criarDiv.textContent = mensagem;
+    criarDiv.className = 'pushNotification';
+    document.body.appendChild(criarDiv);
+
+    setTimeout(() => {criarDiv.style.display = 'none'}, 2000);
+}
+
 // ---------------------- //
 
 const resultado = document.querySelector('#resultado');
+const botaoApagar = document.querySelector('#apagar-ultimo');
 const inserirInfoNutricional = document.querySelector('#inserir-informacao-nutricional');
 const inserirQntPorcoes = document.querySelector('#inserir-qnt-porcoes');
 const inserirCalorias = document.querySelector('#inserir-calorias');
@@ -78,6 +88,10 @@ const inserirSugestaoUso = document.querySelector('#inserir-sugestao-uso');
 let ultimoInserido;
 
 trocarOpcoes();
+
+botaoApagar.addEventListener('click', () => {
+    notificacao("Último elemento foi apagado");
+})
 
 inserirDadosCodigo(inserirInfoNutricional, informacaoNutricional, '#informacaoNutricional');
 inserirDadosCodigo(inserirCalorias, caloriasPorcao, '#calorias');
