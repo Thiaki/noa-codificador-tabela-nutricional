@@ -19,3 +19,17 @@
     border-radius: 8px;
     box-shadow: 5px 5px 10px grey;
 }
+
+.w-25, .w-50{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-25{
+    width: 25%;
+}
+
+.w-50{
+    width: 50%;
+}

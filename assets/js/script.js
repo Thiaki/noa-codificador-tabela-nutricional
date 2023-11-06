@@ -70,7 +70,7 @@ function notificacao (mensagem){
     criarDiv.className = 'pushNotification';
     document.body.appendChild(criarDiv);
 
-    setTimeout(() => {criarDiv.style.display = 'none'}, 2000);
+    setTimeout(() => {criarDiv.style.display = 'none'}, 1000);
 }
 
 // ---------------------- //
